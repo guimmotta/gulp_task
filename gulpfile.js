@@ -1,6 +1,5 @@
 const gulp = require('gulp'); 
 const sass = require('gulp-sass')(require('sass'));
-const sourceMaps = require('gulp-sourcemaps');
 const uglify = require('gulp-uglify');
 const obfuscate = require('gulp-obfuscate');
 const imagemin = require('gulp-imagemin');
@@ -20,11 +19,9 @@ function comprimeJavScript() {
 
 function compilaSass() {
     return gulp.src('./source/styles/main.scss')
-    .pipe(sourceMaps.init())
         .pipe(sass({
             outputStyle: 'compressed'
         }))
-        .pipe(sourceMaps.write('./maps'))
         .pipe(gulp.dest('./build/styles'))
 }
 
